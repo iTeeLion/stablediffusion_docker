@@ -1,14 +1,12 @@
 version: '3.8'
 services:
-  sdwebui:
-    container_name: sdwebui
+  sd:
+    container_name: sd
     restart: unless-stopped
     build:
-      context: ''
-      args:
-        ARG1: 'arg1'
+      context: 'https://raw.githubusercontent.com/iTeeLion/stablediffusion_docker/main/Dockerfile'
     ports:
-      - '8888:8888'
+      - ${WEBUI_PORT:-8080}:8080
     deploy:
       resources:
         reservations:
