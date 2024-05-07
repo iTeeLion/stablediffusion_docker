@@ -18,6 +18,6 @@ WORKDIR /opt/sd
 
 RUN wget -q https://raw.githubusercontent.com/AUTOMATIC1111/stable-diffusion-webui/master/webui.sh
 
-RUN chsh -s /bin/bash ollama
+RUN chsh -s /bin/bash sd
 
 RUN webui.sh
