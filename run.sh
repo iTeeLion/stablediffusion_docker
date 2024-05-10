@@ -1,11 +1,15 @@
-git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui /opt/sd/sd
+git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui
 
-chown -R sd:sd /opt/sd/sd && echo 'venv_dir=./venv' > ./sd/webui-user.sh
+chown -R sd:sd /opt/sd/stable-diffusion-webui
 
-install_dir=./sd
+cd ./stable-diffusion-webui
 
-./sd/webui.sh -f can_run_as_root --exit --skip-torch-cuda-test
+echo 'venv_dir=./venv' > ./webui-user.sh
 
-VIRTUAL_ENV=/sd/venv
+install_dir=./
+
+./webui.sh -f can_run_as_root --exit --skip-torch-cuda-test
+
+VIRTUAL_ENV=/venv
 
 PATH="$VIRTUAL_ENV/bin:$PATH"
