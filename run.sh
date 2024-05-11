@@ -1,7 +1,6 @@
 #!/bin/bash
 
 if [ ! -d /opt/sd/webui/venv ]; then
-  sleep 10
   git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git
   mv -f ./stable-diffusion-webui/* ./webui
   rm -rf ./stable-diffusion-webui/
