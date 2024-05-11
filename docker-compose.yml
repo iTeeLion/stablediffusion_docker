@@ -3,10 +3,17 @@ services:
   sd:
     container_name: sd
     restart: unless-stopped
+    tty: true
     build:
-      context: 'https://raw.githubusercontent.com/iTeeLion/stablediffusion_docker/main/Dockerfile'
+      context: .
     ports:
-      - ${WEBUI_PORT:-8080}:8080
+      - ${WEBUI_PORT:-7860}:7860
+    volumes:
+      - "./extensions:/opt/sd/extensions"
+      - "./modules:/opt/sd/modules"
+      - "./models:/opt/sd/models"
+    environment:
+      CLI_ARGS: "--skip-version-check --allow-code --enable-insecure-extension-access --api --xformers --opt-channelslast"
     deploy:
       resources:
         reservations:
