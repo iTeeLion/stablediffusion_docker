@@ -12,8 +12,8 @@ services:
         GID: ${GID:-1000}
     ports:
       - ${WEBUI_PORT:-7860}:7860
-    #command: bash -c "chown -R sd:sd /opt/sd && tail -F /dev/null" # DEV
-    command: bash -c "chown -R sd:sd /opt/sd && sudo -u sd /opt/sd/entrypoint.sh" # PROD
+    #command: bash -c "chown -R sd:sd /opt/sd && tail -F /dev/null"
+    command: bash -c "chown -R sd:sd /opt/sd && sudo -u sd /opt/sd/entrypoint.sh"
     volumes:
       - "./extensions:/opt/sd/extensions"
       - "./modules:/opt/sd/modules"
