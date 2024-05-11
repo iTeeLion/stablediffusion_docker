@@ -9,7 +9,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update -y \
     && apt-get install -y sudo wget bc git python3 python3-pip python3-venv google-perftools libgl1 libglib2.0-0 libcairo2-dev pkg-config
 
-RUN useradd -m -U sd
+RUN useradd -m -U sd \
     && usermod -u $UID sd \
     && groupmod -g $GID sd
 
