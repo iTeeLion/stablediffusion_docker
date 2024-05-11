@@ -19,7 +19,8 @@ services:
       - "./modules:/opt/sd/modules"
       - "./models:/opt/sd/models"
     environment:
-      CLI_ARGS: ${CLI_ARGS:-"--api"} #--api --enable-insecure-extension-access --allow-code --skip-version-check --opt-channelslast
+      #--api --enable-insecure-extension-access --allow-code --skip-version-check --opt-channelslast
+      CLI_ARGS: ${CLI_ARGS:-"--api"}
     deploy:
       resources:
         reservations:
