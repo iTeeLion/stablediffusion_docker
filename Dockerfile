@@ -9,7 +9,7 @@ RUN apt-get update -y \
 
 RUN useradd -m -U sd
 
-RUN mkdir /opt/sd && chown -R sd:sd /opt/sd
+RUN mkdir -r /opt/sd/webui && chown -R sd:sd /opt/sd
 
 WORKDIR /opt/sd
 
