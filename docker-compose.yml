@@ -4,16 +4,19 @@ services:
     container_name: sd
     restart: unless-stopped
     tty: true
+    user: "${UID:-1000}:${GID:-1000}"
     build:
       context: .
     ports:
       - ${WEBUI_PORT:-7860}:7860
     volumes:
-      - "./extensions:/opt/sd/extensions"
-      - "./modules:/opt/sd/modules"
-      - "./models:/opt/sd/models"
+      - "./extensions:/opt/sd/webui/extensions"
+      - "./modules:/opt/sd/webui/modules"
+      - "./models:/opt/sd/webui/models"
     environment:
-      CLI_ARGS: "--skip-version-check --allow-code --enable-insecure-extension-access --api --xformers --opt-channelslast"
+      UID: ${UID:-1000}
+      GID: ${GID:-1000}
+      CLI_ARGS: "--api --enable-insecure-extension-access --allow-code --skip-version-check --opt-channelslast"
     deploy:
       resources:
         reservations:
@@ -21,3 +24,4 @@ services:
               - driver: nvidia
                 device_ids: ['0']
                 capabilities: [compute, utility]
+                
