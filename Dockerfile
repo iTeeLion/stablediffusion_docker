@@ -20,6 +20,6 @@ WORKDIR /opt/sd
 
 USER sd
 
-RUN wget https://raw.githubusercontent.com/iTeeLion/stablediffusion_docker/main/run.sh -O run.sh && chmod +x ./run.sh
+RUN wget https://raw.githubusercontent.com/iTeeLion/stablediffusion_docker/main/entrypoint.sh && chmod +x ./entrypoint.sh
 
-CMD ./run.sh $CLI_ARGS
+CMD ./entrypoint.sh $CLI_ARGS
