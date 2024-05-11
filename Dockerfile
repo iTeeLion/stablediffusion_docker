@@ -17,6 +17,6 @@ USER sd
 
 RUN chown -R sd:sd /opt/sd
 
-RUN wget https://raw.githubusercontent.com/iTeeLion/stablediffusion_docker/main/run.sh?v=2 -O run.sh && chmod +x ./run.sh
+RUN wget https://raw.githubusercontent.com/iTeeLion/stablediffusion_docker/main/run.sh -O run.sh && chmod +x ./run.sh
 
 CMD ./run.sh $CLI_ARGS
