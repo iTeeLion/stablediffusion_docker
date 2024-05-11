@@ -6,7 +6,7 @@ services:
     tty: true
     user: root
     build:
-      context: .
+      context: 'https://raw.githubusercontent.com/iTeeLion/stablediffusion_docker/main/Dockerfile'
       args:
         UID: ${UID:-1000}
         GID: ${GID:-1000}
