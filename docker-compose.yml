@@ -4,18 +4,20 @@ services:
     container_name: sd
     restart: unless-stopped
     tty: true
-    user: "${UID:-1000}:${GID:-1000}"
+    user: root
     build:
       context: .
+      args:
+        UID: ${UID:-1000}
+        GID: ${GID:-1000}
     ports:
       - ${WEBUI_PORT:-7860}:7860
+    command: bash -c "chown -R sd:sd /opt/sd && sudo -u sd /opt/sd/run.sh"
     volumes:
-      - "./extensions:/opt/sd/webui/extensions"
-      - "./modules:/opt/sd/webui/modules"
-      - "./models:/opt/sd/webui/models"
+      - "./extensions:/opt/sd/extensions"
+      - "./modules:/opt/sd/modules"
+      - "./models:/opt/sd/models"
     environment:
-      UID: ${UID:-1000}
-      GID: ${GID:-1000}
       CLI_ARGS: "--api --enable-insecure-extension-access --allow-code --skip-version-check --opt-channelslast"
     deploy:
       resources:
@@ -24,4 +26,3 @@ services:
               - driver: nvidia
                 device_ids: ['0']
                 capabilities: [compute, utility]
-                
