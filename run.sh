@@ -9,4 +9,4 @@ fi
 
 cd /opt/sd/webui
 
-python3 launch.py --listen $1
+sudo -u sd python3 launch.py --listen $1
