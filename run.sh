@@ -2,7 +2,7 @@
 
 if [ ! -d /opt/sd/webui/venv ]; then
   git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git
-  mv -r ./stable-diffusion-webui/* ./webui
+  mv ./stable-diffusion-webui/* ./webui
   rm -rf ./stable-diffusion-webui/
   cd ./webui
   ./webui.sh --skip-torch-cuda-test --exit
