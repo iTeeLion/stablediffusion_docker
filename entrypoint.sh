@@ -5,7 +5,7 @@ cd /opt/sd
 if [ ! -d /opt/sd/webui/venv ]; then
     git init
     git pull https://github.com/AUTOMATIC1111/stable-diffusion-webui.git
-    ./webui.sh --skip-torch-cuda-test --exit
+    /opt/sd/webui.sh --skip-torch-cuda-test --exit
     pip3 install --upgrade pip && pip3 install packaging numexpr
 fi
 
