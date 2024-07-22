@@ -1,7 +1,7 @@
 version: '3.9'
 services:
   stablediff:
-    container_name: stablediffusion
+    container_name: stablediff
     restart: unless-stopped
     tty: true
     user: root
@@ -12,15 +12,16 @@ services:
         GID: ${GID:-1000}
     ports:
       - ${WEBUI_PORT:-7860}:7860
-    command: bash -c 'chown -R sd:sd /opt/sd && tail -F /dev/null'
-    #command: bash -c 'chown -R sd:sd /opt/sd && sudo -u sd /opt/sd/entrypoint.sh $CLI_ARGS'
+    #command: bash -c 'chown -R sd:sd /opt/sd && tail -F /dev/null'
+    command: bash -c 'chown -R sd:sd /opt/sd && sudo -u sd /opt/sd/entrypoint.sh $CLI_ARGS'
     volumes:
       - stablediffusion:/opt/sd
       - "./extensions:/opt/sd/extensions"
       - "./modules:/opt/sd/modules"
       - "./models:/opt/sd/models"
     environment:
-      CLI_ARGS: ${CLI_ARGS:-"--api --enable-insecure-extension-access --allow-code --skip-version-chec    deploy:
+      CLI_ARGS: ${CLI_ARGS:-"--api --enable-insecure-extension-access --allow-code --skip-version-check --opt-channelslast"}
+    deploy:
       resources:
         reservations:
           devices:
